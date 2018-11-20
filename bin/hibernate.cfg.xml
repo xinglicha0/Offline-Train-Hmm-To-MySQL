@@ -4,7 +4,7 @@
 
         <!-- 1. 数据库连接配置 -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql:///parameter</property>
+        <property name="hibernate.connection.url">jdbc:mysql:///tmptest</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456</property>
         <!--            数据库方法配置， hibernate在运行的时候，会根据不同的方言生成符合当前数据库语法的sql         -->

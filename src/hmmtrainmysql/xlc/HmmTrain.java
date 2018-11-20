@@ -248,18 +248,18 @@ public class HmmTrain{
 		HmmTrainToMysql httm = new HmmTrainToMysql();
 		httm.learn(fileName);
 		
-		String strLabel = "";
+		StringBuffer strLabel = new StringBuffer();
 		for(String str: httm.labellist) {
-			strLabel += str + " ";
+			strLabel.append(str + " ");
 		}
-		String strWord = "";
+		StringBuffer strWord = new StringBuffer();
 		for(String str: httm.wordlist) {
-			strWord += str + " ";
+			strWord.append(str + " ");
 		}
 		
-		String strPi = "";
+		StringBuffer strPi = new StringBuffer();
 		for(double db: httm.pi) {
-			strPi += db + " ";
+			strPi.append(db + " ");
 		}
 		
 		
@@ -276,10 +276,10 @@ public class HmmTrain{
         Table1 table1 = new Table1();
         table1.setLabelSize(httm.labelSize);
         table1.setWordSize(httm.wordSize);
-        table1.setLabelList(strLabel);
+        table1.setLabelList(strLabel.toString());
         //解决默认存储格式存不下的问题
-        table1.setWordList(strWord);
-        table1.setPi(strPi);
+        table1.setWordList(strWord.toString());
+        table1.setPi(strPi.toString());
         
     	session.save(table1);
     	
@@ -287,18 +287,18 @@ public class HmmTrain{
         for (int i = 0; i < httm.labelSize; i++) {
         	Table2 table2 = new Table2();
         	Table3 table3 = new Table3();
-        	String strA = "";
-        	String strB = "";
+        	StringBuffer strA = new StringBuffer();
+        	StringBuffer strB = new StringBuffer();
             for (int j = 0; j < httm.labelSize; j++) {
-            	strA += httm.A[i][j] + " ";
+            	strA.append(httm.A[i][j] + " ");
 			}
             for (int k = 0; k < httm.wordSize; k++) {
-            	strB += httm.B[i][k] + " ";
+            	strB.append(httm.B[i][k] + " ");
 			}
             System.out.println(i);
-            table2.setRowA(strA);
+            table2.setRowA(strA.toString());
             session.save(table2);
-            table3.setRowB(strB);
+            table3.setRowB(strB.toString());
             session.save(table3);
 		}
         
